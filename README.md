@@ -25,4 +25,4 @@ plt.legend()
 plt.grid()
 plt.show()
 ```
-![alt text](file:///home/gabriel/Documents/knn-tspi/Figure_1.png)
+![alt text](./home/gabriel/Documents/knn-tspi/Figure_1.png)
