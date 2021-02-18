@@ -25,9 +25,12 @@ plt.legend()
 plt.grid()
 plt.show()
 ```
-![Figure_1](https://user-images.githubusercontent.com/56834802/108384834-dcc2ba80-71e9-11eb-96aa-2e0c95b0a2a2.png)
 
 ## R example
 
-```R
-```library(ggplot2)
+```r
+source("knn_tspi.R")
+
+z <- knn.tspi(AirPassengers, k = 3, len.query = 12, weights = "uniform", g = NULL, h = h)
+```
+![Figure_1](https://user-images.githubusercontent.com/56834802/108384834-dcc2ba80-71e9-11eb-96aa-2e0c95b0a2a2.png)
