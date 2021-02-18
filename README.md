@@ -5,25 +5,15 @@ Python and R implementation of the KNN-TSPI, the full description of the algorit
 ## Python example
 
 ```python
-import matplotlib.pyplot as plt
 import numpy as np
 from pmdarima.datasets import load_airpassengers
 from knn_tspi import KNeighborsTSPI
 
 ts = load_airpassengers()
-h = 12
 
-model = KNeighborsTSPI(k=3, len_query=12, weights="distance")
+model = KNeighborsTSPI(k=3, len_query=12, weights="uniform")
 model.fit(ts)
-g = lambda distance : np.exp(-distance**2)
-z = model.predict(h=12, g=g)
-
-plt.title("AirPassengers - KNN-TSPI predictions")
-plt.plot(ts, label="observations", color="blue")
-plt.plot(range(ts.shape[0], ts.shape[0]+h), z, label="predictions", color="red")
-plt.legend()
-plt.grid()
-plt.show()
+z = model.predict(h=12)
 ```
 
 ## R example
@@ -31,6 +21,6 @@ plt.show()
 ```r
 source("knn_tspi.R")
 
-z <- knn.tspi(AirPassengers, k = 3, len.query = 12, weights = "uniform", g = NULL, h = h)
+z <- knn.tspi(AirPassengers, k = 3, len.query = 12, weights = "uniform", g = NULL, h = 12)
 ```
 ![Figure_1](https://user-images.githubusercontent.com/56834802/108384834-dcc2ba80-71e9-11eb-96aa-2e0c95b0a2a2.png)
