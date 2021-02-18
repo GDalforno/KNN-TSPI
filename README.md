@@ -26,3 +26,8 @@ plt.grid()
 plt.show()
 ```
 ![Figure_1](https://user-images.githubusercontent.com/56834802/108384834-dcc2ba80-71e9-11eb-96aa-2e0c95b0a2a2.png)
+
+## R example
+
+```R
+```library(ggplot2)
