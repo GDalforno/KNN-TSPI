@@ -2,6 +2,12 @@
 
 Python and R implementation of the KNN-TSPI, the full description of the algorithm is available at: https://www.researchgate.net/publication/300414605_A_Study_of_the_Use_of_Complexity_Measures_in_the_Similarity_Search_Process_Adopted_by_kNN_Algorithm_for_Time_Series_Prediction
 
+## Parameter description
+- k : number of neighbors
+- len_query : number of observations in each query
+- weights : if uniform the prediction is given by the mean, if distance then a function $g$ that takes the distances and outputs its corresponding weights is applied. The default is the inverse of the distance
+- h : forecasting horizon
+ 
 ## Python example
 
 ```python
