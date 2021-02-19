@@ -5,7 +5,7 @@ Python and R implementation of the KNN-TSPI, the full description of the algorit
 ## Parameter description
 - k : number of neighbors
 - len_query : number of observations in each query
-- weights : if uniform the prediction is given by the mean, if distance then a function $g$ that takes the distances and outputs its corresponding weights is applied. The default is the inverse of the distance
+- weights : if uniform the prediction is given by the mean, if distance then a function $`g`$ that takes the distances and outputs its corresponding weights is applied. The default is the inverse of the distance
 - h : forecasting horizon
  
 ## Python example
