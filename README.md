@@ -38,7 +38,7 @@ knn = KNeighborsTSPI(len_query=len_query)
 knn.fit(data)
 y = knn.predict(h=h)
 
-# Applies bootstrap to estimate the forecasting intervals
+# Applies bootstrapping to estimate the forecasting intervals
 futures = []
 for i in range(1000):
     futures.append(y+np.random.choice(res, h))
