@@ -8,7 +8,7 @@ Python implementation of the KNN-TSPI, the full description of the algorithm is 
 - weights : if "uniform" the prediction is given by the mean, if "distance" then a custom function g that takes the distances and outputs its corresponding weights is applied. The default is the inverse of the distance;
 - h : forecasting horizon.
  
-## Python example
+## Example
 
 ```python
 import numpy as np
