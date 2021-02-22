@@ -34,7 +34,7 @@ for train_idxs, test_idx in RollingForecastCV(h=1, step=1, initial=3*len_query).
     res.append(data[test_idx][0]-knn.predict(h=1)[0])
 
 # Forecast the future observations
-knn = KNeighborsTSPI(len_query=len_query)
+knn = KNeighborsTSPI(k=k, len_query=len_query)
 knn.fit(data)
 y = knn.predict(h=h)
 
