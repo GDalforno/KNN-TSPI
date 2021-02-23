@@ -21,7 +21,7 @@ from knn_tspi import KNeighborsTSPI
 # Loads the time series
 data = load_woolyrnq()
 
-# Sets the knn-tspi hyperparameter
+# Sets the knn-tspi hyperparameters
 k = 3
 len_query = 4
 h = 16
