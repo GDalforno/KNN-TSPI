@@ -93,7 +93,7 @@ class KNeighborsTSPI:
         predictions : array-like of shape (h,)
         """
         predictions = []
-        for i in range(h):
+        for _ in range(h):
             f = self.__predict(self.__queue.as_array(), g)
             predictions.append(f)
             self.__queue.dequeue()
