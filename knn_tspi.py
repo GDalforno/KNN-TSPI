@@ -106,7 +106,7 @@ class KNeighborsTSPI:
         min_k = int(np.sum(np.mod(-indexes, indexes+1)))
         indexes -= 1
         query_mean = np.mean(query)
-        query_std = np.std(query, ddof=1)
+        query_std = np.std(query)
 
         if min_k==0:
             raise RuntimeError(f"min_k is zero, this usually means the"\
