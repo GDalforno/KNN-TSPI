@@ -5,8 +5,11 @@ Python and R implementation of the KNN-TSPI, the full description of the algorit
 ## Parameter description
 - k : number of neighbors;
 - len_query : number of observations in each query;
-- weights : if "uniform" the prediction is given by the mean, if "distance" then a custom function g that takes the distances and outputs its corresponding weights is applied. The default is the inverse of the distance;
+- weights (python): if "uniform" the prediction is given by the mean, if "distance" then a custom function g that takes the distances and outputs its corresponding weights is applied. The default is the inverse of the distance;
 - h : forecasting horizon.
+
+## Remarks
+In the R implemenation, the equivalent of the "weights" parameter is the "target" one, it can be either "mean", "median" or "custom". The latter behaves exactly like the "distance" value in the Python implementation and the first two are related to the "uniform". Furthermore, the calculation of the predicitons intervals are embedded into the knn.tspi function by setting the parameter "pred_interval" to True, this process can take a long time to run since it uses time series CV with one step ahead to calculate the residuals on the training set and bootstrap them at prediction time. More information about implementation details can be found at the .py and .r files.
  
 ## Python Example
 
