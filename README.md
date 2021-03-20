@@ -111,3 +111,4 @@ legend(
 )
 grid(col = "gray", lty = 1, lwd = 1, equilogs = TRUE)
 ```
+![Figure_1](https://user-images.githubusercontent.com/56834802/108731205-186fc400-750b-11eb-97ab-32e739096c5a.png)
