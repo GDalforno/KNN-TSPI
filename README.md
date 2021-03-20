@@ -1,6 +1,6 @@
 # K-Nearest Neighbors Time Series Prediction with Invariances
 
-Python implementation of the KNN-TSPI, the full description of the algorithm is available at: https://www.researchgate.net/publication/300414605_A_Study_of_the_Use_of_Complexity_Measures_in_the_Similarity_Search_Process_Adopted_by_kNN_Algorithm_for_Time_Series_Prediction
+Python and R implementation of the KNN-TSPI, the full description of the algorithm is available at: https://www.researchgate.net/publication/300414605_A_Study_of_the_Use_of_Complexity_Measures_in_the_Similarity_Search_Process_Adopted_by_kNN_Algorithm_for_Time_Series_Prediction
 
 ## Parameter description
 - k : number of neighbors;
@@ -8,7 +8,7 @@ Python implementation of the KNN-TSPI, the full description of the algorithm is 
 - weights : if "uniform" the prediction is given by the mean, if "distance" then a custom function g that takes the distances and outputs its corresponding weights is applied. The default is the inverse of the distance;
 - h : forecasting horizon.
  
-## Example
+## Python Example
 
 ```python
 import numpy as np
@@ -61,3 +61,53 @@ plt.show()
 ```
 
 ![Figure_1](https://user-images.githubusercontent.com/56834802/108731205-186fc400-750b-11eb-97ab-32e739096c5a.png)
+
+## R Example
+
+```R
+library(ggplot2)
+source("knn_tspi.r")
+
+
+# Reading the dataset
+rain <- scan("http://robjhyndman.com/tsdldata/hurst/precip1.dat", skip = 1)
+rain <- ts(rain, start = 1813, end = 1912, frequency = 1)
+
+# Train test split
+h <- 10
+train <- tail(rain, -h)
+test <- tail(rain, h)
+
+# Model fitting and forecasting
+y <- knn.tspi(
+    train, 
+    k = 5, 
+    len_query = 5, 
+    target = "median", 
+    h = h, 
+    pred_interval = T)
+
+# Plotting the results
+rng <- 1903:1912
+plot(
+    x = 1813:1912,
+    y = rain, 
+    type = "l", 
+    main = "Rain forecasts using KNN-TSPI",
+    xlab = "Year",
+    ylab = "Inches",
+    lwd = 2
+)
+polygon(c(rng, rev(rng)), c(y[,"5%"], rev(y[,"95%"])), col = "skyblue", border = NA)
+polygon(c(rng, rev(rng)), c(y[,"20%"], rev(y[,"80%"])), col = "cornflowerblue", border = NA)
+lines(rng, y[,"mean"], type="l", col = "blue", lwd = 3)
+lines(rng, test, type="l", col = "black", lwd = 2)
+legend(
+    "topleft", 
+    legend = c("Historical", "Mean", "80% Confidence", "90% Confidence"),
+    col = c("black", "blue", "cornflowerblue", "skyblue"),
+    lty=1,
+    lwd = 2
+)
+grid(col = "gray", lty = 1, lwd = 1, equilogs = TRUE)
+```
