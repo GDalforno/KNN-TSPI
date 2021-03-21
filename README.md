@@ -120,4 +120,4 @@ legend(
 )
 grid(col = "gray", lty = 1, lwd = 1, equilogs = TRUE)
 ```
-![Figure2](https://github.com/GDalforno/KNN-TSPI/files/6177708/Rplots.pdf)
+![Figure2](https://user-images.githubusercontent.com/56834802/111910459-36641200-8a40-11eb-809f-2c83e3109d2d.png)
