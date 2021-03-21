@@ -3,13 +3,17 @@
 Python and R implementation of the KNN-TSPI, the full description of the algorithm is available at: https://www.researchgate.net/publication/300414605_A_Study_of_the_Use_of_Complexity_Measures_in_the_Similarity_Search_Process_Adopted_by_kNN_Algorithm_for_Time_Series_Prediction
 
 ## Parameter description
+### Python
 - k : number of neighbors;
 - len_query : number of observations in each query;
-- weights (python): if "uniform" the prediction is given by the mean, if "distance" then a custom function g that takes the distances and outputs its corresponding weights is applied. The default is the inverse of the distance;
+- weights : if "uniform" the prediction is given by the mean, if "distance" then a custom function g that takes the distances and outputs its corresponding weights is applied. The default is the inverse of the distance;
 - h : forecasting horizon.
-
-## Remarks
-In the R implemenation, the equivalent of the "weights" parameter is the "target" one, it can be either "mean", "median" or "custom". The latter behaves exactly like the "distance" value in the Python implementation and the first two are related to the "uniform". Furthermore, the calculation of the predicitons intervals are embedded into the knn.tspi function by setting the parameter "pred_interval" to True, this process can take a long time to run since it uses time series CV with one step ahead to calculate the residuals on the training set and bootstrap them at prediction time. More information about implementation details can be found at the .py and .r files.
+### R
+- k : number of neighbors;
+- len_query : number of observations in each query;
+- target : way to combine the predictions from the k nearest neighbors, it can be either "mean", "median" or "custom". The latter applies a given function g that takes the distances and outputs its corresponding weights, if g is NULL, then the default is the inverse of the distance;
+- pred_interval : whether to calculate the 80% and 95% prediction intervals using bootstrapping, it can be quite time consuming;
+- h : forecasting horizon.
  
 ## Python Example
 
@@ -53,8 +57,10 @@ rng = range(len(data), len(data)+h)
 plt.title("KNN-TSPI Predictions - Quarterly production of woollen yarn in Australia")
 plt.plot(data, color="black", label="Historical")
 plt.plot(rng, y, color="blue", label="Mean")
-plt.fill_between(rng, intervals[0, :], intervals[1, :], color="cornflowerblue", label="80% confidence")
-plt.fill_between(rng, intervals[1, :], intervals[3, :], color="lightsteelblue", label="95% confidence")
+plt.fill_between(
+    rng, intervals[0, :], intervals[1, :], color="cornflowerblue", label="80% confidence")
+plt.fill_between(
+    rng, intervals[1, :], intervals[3, :], color="lightsteelblue", label="95% confidence")
 plt.fill_between(rng, intervals[2, :], intervals[0, :], color="lightsteelblue")
 plt.grid()
 plt.xlabel("Time")
