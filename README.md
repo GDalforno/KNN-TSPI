@@ -11,7 +11,7 @@ Python and R implementation of the KNN-TSPI, the full description of the algorit
 ### R
 - k : number of neighbors;
 - len_query : number of observations in each query;
-- target : way to combine the predictions from the k nearest neighbors, it can be either "mean", "median" or "custom". The latter applies a given function g that takes the distances and outputs its corresponding weights, if g is NULL, then the default is the inverse of the distance;
+- target : way to combine the labels from the k nearest neighbors, it can be either "mean", "median" or "custom". The latter applies a given function g that takes the distances as input and outputs its corresponding weights, the default is the inverse of the distance;
 - pred_interval : whether to calculate the 80% and 95% prediction intervals using bootstrapping, it can be quite time consuming;
 - h : forecasting horizon.
  
