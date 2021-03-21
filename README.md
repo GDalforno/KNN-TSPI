@@ -74,9 +74,7 @@ plt.show()
 ## R Example
 
 ```R
-library(ggplot2)
 source("knn_tspi.r")
-
 
 # Reading the dataset
 rain <- scan("http://robjhyndman.com/tsdldata/hurst/precip1.dat", skip = 1)
@@ -95,32 +93,18 @@ y <- knn.tspi(
     target = "median", 
     h = h, 
     pred_interval = T)
-
-# Plotting the results
-rng <- 1903:1912
-plot(
-    x = 1813:1912,
-    y = rain, 
-    type = "l", 
-    main = "Rain forecasts using KNN-TSPI",
-    xlab = "Year",
-    ylab = "Inches",
-    lwd = 2
-)
-polygon(c(rng, rev(rng)), c(y[,"5%"], rev(y[,"95%"])), col = "skyblue", border = NA)
-polygon(c(rng, rev(rng)), c(y[,"20%"], rev(y[,"80%"])), col = "cornflowerblue", border = NA)
-lines(rng, y[,"mean"], type="l", col = "blue", lwd = 3)
-lines(rng, test, type="l", col = "black", lwd = 2)
-legend(
-    "topleft", 
-    legend = c("Historical", "Mean", "80% Confidence", "90% Confidence"),
-    col = c("black", "blue", "cornflowerblue", "skyblue"),
-    lty=1,
-    lwd = 2
-)
-grid(col = "gray", lty = 1, lwd = 1, equilogs = TRUE)
+print(y)
 ```
-| First Header  | Second Header |
-| ------------- | ------------- |
-| Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |
+| | mean | 5% | 20% | 80% | 95% |
+|-|------|----|-----|-----|-----|
+|1| 24.56515 | 15.82227 | 19.04634 | 29.56362 | 35.06225 |
+|2| 24.52287 | 15.78000 | 19.69866 | 29.96626 | 35.01998 |
+|3| 25.20923 | 16.87761 | 20.38502 | 30.37017 | 35.63714 |
+|4| 25.43562 | 16.69275 | 20.61141 | 30.59656 | 35.93273 |
+|5| 26.09145 | 17.73927 | 20.58639 | 31.65695 | 36.58856 |
+|6| 24.86683 | 16.12396 | 20.13286 | 30.31022 | 35.36394 |
+|7| 25.42266 | 16.67978 | 19.91760 | 30.58359 | 35.91976 |
+|8| 25.36732 | 16.62444 | 19.84851 | 30.81071 | 37.39098 |
+|9| 25.56297 | 17.23136 | 20.82900 | 30.72391 | 36.06008 |
+|10| 25.36988 | 16.62700 | 19.86482 | 30.53082 |35.86698 |
+
