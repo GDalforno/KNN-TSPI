@@ -52,7 +52,8 @@ knn.tspi <- function(
             futures[i,] <- mean+sample(res, h)
         }
         quants <- t(apply(futures, 2, quantile, probs = c(0.05, 0.2, 0.8, 0.95)))
-        quants <- cbind(mean, quants)
+        quants <- cbind(quants, mean)
+        colnames(quants) <- c("Low 95", "Low 80", "High 80", "High 95", "Mean")
         return(quants)
     }
 }   
