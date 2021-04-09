@@ -15,7 +15,7 @@ Python and R implementation of the KNN-TSPI, the full description of the algorit
 - pred_interval : whether to calculate the 80% and 95% prediction intervals using bootstrapping, it can be quite time consuming;
 - h : forecasting horizon.
  
-## Python Example
+## Example
 
 ```python
 import numpy as np
