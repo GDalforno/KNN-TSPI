@@ -27,7 +27,6 @@ jobs:
       - name: Update version in setup.py
         run: >-
           sed -i "s/{{VERSION_PLACEHOLDER}}/${{ steps.tag.outputs.TAG_NAME }}/g" setup.py
-          sed -i "s/{{VERSION_PLACEHOLDER}}/${{ steps.tag.outputs.TAG_NAME }}/g" knn_tspi/__init__.py
       - name: Build package
         run: make build-ci
       - name: Publish package
