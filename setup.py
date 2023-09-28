@@ -1,7 +1,7 @@
 from setuptools import find_packages, setup
 
 setup(
-    name="knn-tspi-test-0",
+    name="knn-tspi",
     version="1.0.0",
     author="Gabriel Dalforno, Moisés Rocha",
     author_email="gdalforno7@gmail.com, moises0rocha@gmail.com",
