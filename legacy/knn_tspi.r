@@ -22,18 +22,18 @@
 # References
 #--------------------------------------------------------------------------
 # [1] G. E. A. P. A. Batista, A. R. S. Parmezan,
-#  ``A Study of the Use of Complexity Measures in the Similarity 
+#  ``A Study of the Use of Complexity Measures in the Similarity
 #  Search Process Adopted by kNN Algorithm for Time Series Prediction´´,
-#  2015, Instituto de Ciências Matemáticas e de Computação, 
+#  2015, Instituto de Ciências Matemáticas e de Computação,
 #  Universidade de São Paulo, São Carlos.
 #--------------------------------------------------------------------------
 knn.tspi <- function(
-        data, 
-        k = 3, 
-        len_query = 4, 
-        target = "mean", 
-        h = 1, 
-        g = NULL, 
+        data,
+        k = 3,
+        len_query = 4,
+        target = "mean",
+        h = 1,
+        g = NULL,
         pred_interval = F) {
     if(pred_interval==F) {
         return(predict_global(data, k, len_query, target, h, g))
@@ -56,14 +56,14 @@ knn.tspi <- function(
         colnames(quants) <- c("Low 95", "Low 80", "High 80", "High 95", "Mean")
         return(quants)
     }
-}   
+}
 
 predict_global <- function(
-        data, 
-        k = 3, 
-        len_query = 4, 
-        target = "mean", 
-        h = 1, 
+        data,
+        k = 3,
+        len_query = 4,
+        target = "mean",
+        h = 1,
         g = NULL) {
     data <- as.numeric(data)
     if(any(is.na(data))) {
@@ -83,7 +83,7 @@ predict_global <- function(
     if(!(target %in% c("mean", "median", "custom"))) {
         warning(
             paste(
-                "target must be either ``mean'', ``median'' or ``custom'', got", 
+                "target must be either ``mean'', ``median'' or ``custom'', got",
                 target
             )
         )
@@ -114,21 +114,21 @@ predict_ <- function(data, query, k, len_query, target, g) {
         warning("min_k is 0, this usually mean the data is to short and/or the len_query is too large")
     }
     predictions <- rep(0, min_k)
-    
+
     query_mean <- mean(query)
     query_std <- sd(query)
-    
+
     for(i in 1 : min_k) {
         subseq <- data[indexes[i] : (indexes[i] + len_query)]
         subseq <- z_score2(subseq, query)
         subseq <- subseq * query_std + query_mean # Inverse function
-        
+
         # MVA or WA
         predictions[i] <- subseq[(len_query + 1)]
     }
 
-    res <- switch(target, 
-        "mean"=mean(predictions), 
+    res <- switch(target,
+        "mean"=mean(predictions),
         "median"=median(predictions),
         "custom"=weighted_average(min_dists, predictions, g)
     )
@@ -149,7 +149,7 @@ similarity_search <- function(data, query, k, len_query) {
                 if (is.na(d) | d == Inf) {
                     warning(paste('distance_measure =', d))
                 }
-                
+
                 if (d < min_dists[i]) {
                     min_dists[i] <- d
                     indexes[i] <- j
@@ -170,7 +170,7 @@ weighted_average <- function(min_dists, predictions, g) {
             expr = {
                 min_dists <- g(min_dists)
             },
-            error = function(e){ 
+            error = function(e){
                 warning("Error while calculating the weights")
             })
     }
@@ -195,7 +195,7 @@ z_score2 <- function(s, q) {
         m <- mean(s)
         d <- sd(s)
     }
-    
+
     if(d == 0) {
         z <- s - m
     } else {
@@ -231,4 +231,3 @@ CID <- function(Q, C) {
 distance <- function(s, t) {
     return(CID(s, t))
 }
-

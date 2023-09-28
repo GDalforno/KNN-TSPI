@@ -1,0 +1,9 @@
+include .coveragerc
+include Makefile
+include conftest.py
+include README.md
+include pyproject.toml
+include requirements.txt
+recursive-include examples *
+
+exclude .pre-commit-config.yaml
