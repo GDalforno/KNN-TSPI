@@ -1,6 +1,13 @@
-# K-Nearest Neighbors Time Series Prediction with Invariances
+![PyPI - Downloads](https://img.shields.io/pypi/dm/knn-tspi)
+![PyPI - Format](https://img.shields.io/pypi/format/knn-tspi)
+![PyPI - Implementation](https://img.shields.io/pypi/implementation/knn-tspi)
+![PyPI - License](https://img.shields.io/pypi/l/knn-tspi)
+![PyPI - Status](https://img.shields.io/pypi/status/knn-tspi)
+![PyPI - Version](https://img.shields.io/pypi/v/knn-tspi)
+![PyPI - Wheel](https://img.shields.io/pypi/wheel/knn-tspi)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/knn-tspi)
 
-<image alt="logo.png" src="./docs/images/logo.png" width="150rem"/>
+<image alt="logo.png" src="https://raw.githubusercontent.com/GDalforno/KNN-TSPI/main/docs/images/logo.png" width="150rem"/>
 
 K-Nearest Neighbors Time Series Prediction with Invariances (KNN-TSPI) algorithm implementation in python. For details about the model access: https://www.researchgate.net/publication/300414605_A_Study_of_the_Use_of_Complexity_Measures_in_the_Similarity_Search_Process_Adopted_by_kNN_Algorithm_for_Time_Series_Prediction
 
@@ -38,7 +45,7 @@ model.fit(data)
 y = model.predict(h=5)
 ```
 
-For more detailed examples on how to use the package access [examples](./examples/).
+For more detailed examples on how to use the package access [examples](https://github.com/GDalforno/KNN-TSPI/tree/main/examples).
 
 ## Development
 
@@ -55,8 +62,8 @@ git clone https://github.com/GDalforno/KNN-TSPI.git
 Create a python virtual environment and activate it with the command:
 
 ```sh
-python3.11 -m venv .env
-source .env/bin/activate
+python3.11 -m venv .venv
+source .venv/bin/activate
 ```
 
 Then, set the enviroment up with the command:
@@ -79,11 +86,11 @@ You can contributing to the project by opening issues, pull requests and reviewi
 
 ## License
 
-This project is licensed under the MIT License - see the [License](./LICENSE.txt) file for details.
+This project is licensed under the MIT License - see the [License](https://github.com/GDalforno/KNN-TSPI/blob/main/LICENSE.txt) file for details.
 
 ## Changelog
 
-See the [changelog](./CHANGES.txt) for a history of notable changes to knn-tspi.
+See the [changelog](https://github.com/GDalforno/KNN-TSPI/blob/main/CHANGES.txt) for a history of notable changes to knn-tspi.
 
 ## Project History
 
@@ -93,7 +100,7 @@ One of my colleagues, [Moisés Rocha](https://github.com/moisesrsantos), send me
 
 Throughtout the years that followed, I have seen a growing interest in this repo, and now, I decided to publish it on pip to make it easier for people to include the model in their time series forecasting toolbox as I did a couple of years ago. As far as I know, there is no other implementation of the KNN-TSPI out there.
 
-I am not planning on creating a CRAN package to distribute the model for the R community anytime soon. With that being said, feel free to implement it yourself if you wish. The core R code can be found [here](./legacy/).
+I am not planning on creating a CRAN package to distribute the model for the R community anytime soon. With that being said, feel free to implement it yourself if you wish. The core R code can be found [here](https://github.com/GDalforno/KNN-TSPI/tree/main/legacy).
 
 ## Communication
 
