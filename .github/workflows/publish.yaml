@@ -34,10 +34,13 @@ jobs:
         if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
       - name: Lint
         run: |
+          source .venv/bin/activate
           ruff check knn_tspi/
           mypy knn_tspi/ --explicit-package-bases --install-types --non-interactive
       - name: Test
-        run: pytest --cov -vv -W ignore --cov-fail-under=90 --cov-report term-missing
+        run: |
+          source .venv/bin/activate
+          pytest --cov -vv -W ignore --cov-fail-under=90 --cov-report term-missing
       - uses: AppThreat/sast-scan-action@master
         with:
           type: "python"
