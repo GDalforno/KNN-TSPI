@@ -1,19 +1,19 @@
 setup-dev:
-	pip install pytest==7.1.2 pytest-cov==4.0.0 pytest-mock==3.10.0 pre-commit==3.2.2 black==23.1.0 mypy==1.4.1
-	pip install -r requirements.txt
+	pip install poetry==1.8.0 pre-commit==3.7.0
 	pre-commit install --hook-type pre-commit --hook-type pre-push
 	pre-commit run --all-files
+	poetry install
 
 test-dev:
 	pytest -vv -W ignore
 
 setup-ci:
-	python3 -m pip install --upgrade pip build twine
-	pip install pytest==7.1.2 pytest-cov==4.0.0 pytest-mock==3.10.0 black==23.1.0 mypy==1.4.1
-	pip install -r requirements.txt
+	python3 -m pip install poetry==1.8.0
+	python3 -m poetry install
 
 lint-ci:
-	python3 -m black knn_tspi/
+	python3 -m ruff check knn_tspi/
+    python3 -m mypy knn_tspi/ --explicit-package-bases --install-types --non-interactive
 
 test-ci:
 	python3 -m pytest --cov -vv -W ignore --cov-fail-under=90 --cov-report term-missing

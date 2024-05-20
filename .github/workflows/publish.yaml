@@ -1,4 +1,4 @@
-name: Upload KNN-TSPI Package on Release
+name: Upload KNN-TSPI Package to Pypi on Release
 
 on:
   release:
@@ -26,13 +26,13 @@ jobs:
       - name: Extract tag name
         id: tag
         run: echo ::set-output name=TAG_NAME::$(echo $GITHUB_REF | cut -d / -f 3)
-      - name: Update version in setup.py
+      - name: Update version in __init__.py
         run: >-
-          sed -i "s/{{VERSION_PLACEHOLDER}}/${{ steps.tag.outputs.TAG_NAME }}/g" setup.py
-      - name: Build package
-        run: make build-ci
-      - name: Publish package
-        uses: pypa/gh-action-pypi-publish@release/v1
+          sed -i "s/{{VERSION_PLACEHOLDER}}/${{ steps.tag.outputs.TAG_NAME }}/g" __init__.py
+      - name: Build and publish to pypi
+        uses: JRubics/poetry-publish@v2.0
         with:
-          user: __token__
-          password: ${{ secrets.PYPI_API_TOKEN }}
+          pypi_token: ${{ secrets.TEST_PYPI_TOKEN }}
+          repository_name: "testpypi"
+          repository_url: "https://test.pypi.org/legacy/"
+          plugins: "poetry-dynamic-versioning[plugin]"

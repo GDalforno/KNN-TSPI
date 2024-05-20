@@ -6,7 +6,7 @@ from knn_tspi.bootstrap import bootstrap_residuals, calculate_residuals
 from knn_tspi.predict import predict
 from knn_tspi.validation import validate_hyperparameters, validate_fit, validate_predict
 
-__version__ = "1.0.0"
+__version__ = "{{VERSION_PLACEHOLDER}}"
 
 
 class KNeighborsTSPI:
