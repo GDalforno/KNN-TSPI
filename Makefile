@@ -13,7 +13,7 @@ setup-ci:
 
 lint-ci:
 	python3 -m ruff check knn_tspi/
-    python3 -m mypy knn_tspi/ --explicit-package-bases --install-types --non-interactive
+	python3 -m mypy knn_tspi/ --explicit-package-bases --install-types --non-interactive
 
 test-ci:
 	python3 -m pytest --cov -vv -W ignore --cov-fail-under=90 --cov-report term-missing
