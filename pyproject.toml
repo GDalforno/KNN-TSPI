@@ -1,9 +1,20 @@
 [tool.poetry]
 name = "knn-tspi"
 version = "0.1.0"
-description = ""
-authors = ["GDalforno <gabriel.dalforno@semantix.ai>"]
+description = "K-Nearest Neighbors Time Series Prediction with Invariances"
+authors = ["GDalforno <gdalforno7@gmail.com>", "moisesrsantos <moises0rocha@gmail.com>"]
+maintainers = ["GDalforno <gdalforno7@gmail.com>", "moisesrsantos <moises0rocha@gmail.com>"]
+license = "MIT"
 readme = "README.md"
+keywords = ["time series", "forecasting", "machine learning"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: Unix",
+    "Programming Language :: Python :: 3.10",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
 
 [tool.poetry.dependencies]
 python = "^3.10"
