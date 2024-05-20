@@ -14,12 +14,19 @@ jobs:
       id-token: write
     steps:
       - uses: actions/checkout@v3
+      - uses: actions/setup-python@v3
+        with:
+          python-version: "3.10"
       - name: Install dependencies
-        run: make setup-ci
+        run: |
+          pip install poetry==1.8.0
+          poetry install --with ci
       - name: Lint
-        run: make lint-ci
+        run: |
+          ruff check knn_tspi/
+          mypy knn_tspi/ --explicit-package-bases --install-types --non-interactive
       - name: Test
-        run: make test-ci
+        run: pytest --cov -vv -W ignore --cov-fail-under=90 --cov-report term-missing
       - uses: AppThreat/sast-scan-action@master
         with:
           type: "python"
