@@ -2,8 +2,17 @@
 name = "knn-tspi"
 version = "0.1.0"
 description = "K-Nearest Neighbors Time Series Prediction with Invariances"
-authors = ["GDalforno <gdalforno7@gmail.com>", "moisesrsantos <moises0rocha@gmail.com>"]
-maintainers = ["GDalforno <gdalforno7@gmail.com>", "moisesrsantos <moises0rocha@gmail.com>"]
+authors = [
+    "GDalforno <gdalforno7@gmail.com>",
+    "moisesrsantos <moises0rocha@gmail.com>",
+]
+maintainers = [
+    "GDalforno <gdalforno7@gmail.com>",
+    "moisesrsantos <moises0rocha@gmail.com>",
+]
+homepage = "https://pypi.org/project/knn-tspi/"
+repository = "https://github.com/GDalforno/KNN-TSPI"
+documentation = "https://github.com/GDalforno/KNN-TSPI/blob/main/README.md"
 license = "MIT"
 readme = "README.md"
 keywords = ["time series", "forecasting", "machine learning"]
