@@ -8,7 +8,7 @@ permissions:
   contents: read
 
 jobs:
-  publish:
+  pre-publish:
     runs-on: ubuntu-22.04
     permissions:
       id-token: write
@@ -45,7 +45,15 @@ jobs:
         with:
           type: "python"
           src: "/github/workspace/knn_tspi"
-
+  publish:
+    runs-on: ubuntu-22.04
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v3
+        with:
+          python-version: "3.10"
       - name: Extract tag name
         id: tag
         run: echo ::set-output name=TAG_NAME::$(echo $GITHUB_REF | cut -d / -f 3)
@@ -55,6 +63,8 @@ jobs:
       - name: Build and publish to pypi
         uses: JRubics/poetry-publish@v2.0
         with:
+          python_version: "3.10"
+          poetry_version: "1.8.2"
           pypi_token: ${{ secrets.TEST_PYPI_TOKEN }}
           repository_name: "testpypi"
           repository_url: "https://test.pypi.org/legacy/"
