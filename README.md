@@ -1,15 +1,19 @@
-![PyPI - Downloads](https://img.shields.io/pypi/dm/knn-tspi)
+[![PyPI - Downloads](https://img.shields.io/pypi/dm/knn-tspi)](https://pypistats.org/packages/knn-tspi)
 ![PyPI - Format](https://img.shields.io/pypi/format/knn-tspi)
 ![PyPI - Implementation](https://img.shields.io/pypi/implementation/knn-tspi)
-![PyPI - License](https://img.shields.io/pypi/l/knn-tspi)
+[![PyPI - License](https://img.shields.io/pypi/l/knn-tspi)](https://github.com/GDalforno/KNN-TSPI/blob/main/LICENSE.txt)
 ![PyPI - Status](https://img.shields.io/pypi/status/knn-tspi)
 ![PyPI - Version](https://img.shields.io/pypi/v/knn-tspi)
-![PyPI - Wheel](https://img.shields.io/pypi/wheel/knn-tspi)
-![PyPI - Python Version](https://img.shields.io/pypi/pyversions/knn-tspi)
+[![PEP8](https://img.shields.io/badge/code%20style-pep8-orange.svg)](https://www.python.org/dev/peps/pep-0008/)
+![Workflow](https://img.shields.io/github/actions/workflow/status/GDalforno/KNN-TSPI/publish.yaml)
+![Release](https://img.shields.io/github/v/release/GDalforno/KNN-TSPI)
+![Last Commit](https://img.shields.io/github/last-commit/GDalforno/KNN-TSPI)
+![Forks](https://img.shields.io/github/forks/GDalforno/KNN-TSPI)
+![Repo Stars](https://img.shields.io/github/stars/GDalforno/KNN-TSPI)
 
 <image alt="logo.png" src="https://raw.githubusercontent.com/GDalforno/KNN-TSPI/main/docs/images/logo.png" width="150rem"/>
 
-K-Nearest Neighbors Time Series Prediction with Invariances (KNN-TSPI) algorithm implementation in python. For details about the model access: https://www.researchgate.net/publication/300414605_A_Study_of_the_Use_of_Complexity_Measures_in_the_Similarity_Search_Process_Adopted_by_kNN_Algorithm_for_Time_Series_Prediction
+K-Nearest Neighbors Time Series Prediction with Invariances (KNN-TSPI) algorithm implementation in python. For details about the model access the [paper](https://www.researchgate.net/publication/300414605_A_Study_of_the_Use_of_Complexity_Measures_in_the_Similarity_Search_Process_Adopted_by_kNN_Algorithm_for_Time_Series_Prediction).
 
 ## Installation
 
