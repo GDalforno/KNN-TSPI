@@ -49,6 +49,7 @@ jobs:
     runs-on: ubuntu-22.04
     permissions:
       id-token: write
+    needs: pre-publish
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v3
