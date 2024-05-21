@@ -44,6 +44,8 @@ jobs:
       - uses: AppThreat/sast-scan-action@master
         with:
           type: "python"
+          src: "/github/workspace/knn_tspi"
+
       - name: Extract tag name
         id: tag
         run: echo ::set-output name=TAG_NAME::$(echo $GITHUB_REF | cut -d / -f 3)
