@@ -6,6 +6,7 @@
 ![PyPI - Version](https://img.shields.io/pypi/v/knn-tspi)
 [![PEP8](https://img.shields.io/badge/code%20style-pep8-orange.svg)](https://www.python.org/dev/peps/pep-0008/)
 ![Workflow](https://img.shields.io/github/actions/workflow/status/GDalforno/KNN-TSPI/publish.yaml)
+[![codecov](https://codecov.io/gh/GDalforno/KNN-TSPI/graph/badge.svg?token=JU4LNQ08D3)](https://codecov.io/gh/GDalforno/KNN-TSPI)
 ![Release](https://img.shields.io/github/v/release/GDalforno/KNN-TSPI)
 ![Last Commit](https://img.shields.io/github/last-commit/GDalforno/KNN-TSPI)
 ![Forks](https://img.shields.io/github/forks/GDalforno/KNN-TSPI)
