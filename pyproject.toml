@@ -1,3 +1,56 @@
+[tool.poetry]
+name = "knn-tspi"
+version = "0.1.0"
+description = "K-Nearest Neighbors Time Series Prediction with Invariances"
+authors = [
+    "GDalforno <gdalforno7@gmail.com>",
+    "moisesrsantos <moises0rocha@gmail.com>",
+]
+maintainers = [
+    "GDalforno <gdalforno7@gmail.com>",
+    "moisesrsantos <moises0rocha@gmail.com>",
+]
+homepage = "https://pypi.org/project/knn-tspi/"
+repository = "https://github.com/GDalforno/KNN-TSPI"
+documentation = "https://github.com/GDalforno/KNN-TSPI/blob/main/README.md"
+license = "MIT"
+readme = "README.md"
+keywords = ["time series", "forecasting", "machine learning"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: Unix",
+    "Programming Language :: Python :: 3.10",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+numpy = "^1.26.4"
+
+
+[tool.poetry.group.ci.dependencies]
+pytest = "^8.2.1"
+pytest-cov = "^5.0.0"
+ruff = "^0.4.4"
+mypy = "^1.10.0"
+
+[tool.coverage.run]
+omit = ["tests/*"]
+
+[tool.poetry-dynamic-versioning]
+enable = true
+vcs = "git"
+pattern  = "^(?P<base>\\d+\\.\\d+\\.\\d+)(-?((?P<stage>[a-zA-Z]+)\\.?(?P<revision>\\d+)?))?"
+format-jinja = """
+    {%- if distance == 0 -%}
+        {{- base -}}
+    {%- else -%}
+        {{- base }}.dev{{ distance }}+g{{commit}}
+    {%- endif -%}
+"""
+
 [build-system]
-requires = ['setuptools>=42']
-build-backend = 'setuptools.build_meta'
+requires = ["poetry-core>=1.0.0", "poetry-dynamic-versioning>=1.0.0,<2.0.0"]
+build-backend = "poetry_dynamic_versioning.backend"

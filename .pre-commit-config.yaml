@@ -1,31 +1,47 @@
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.3.0
+    rev: v4.5.0
     hooks:
       - id: check-yaml
+        stages: [pre-commit]
       - id: end-of-file-fixer
+        stages: [pre-commit]
       - id: trailing-whitespace
-  - repo: https://github.com/psf/black
-    rev: 23.3.0
-    hooks:
-      - id: black
+        stages: [pre-commit]
+      - id: check-ast
+        stages: [pre-commit]
+      - id: check-toml
+        stages: [pre-commit]
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.0.272
+    rev: v0.3.7
     hooks:
       - id: ruff
-        args: ["--fix", "--show-source", "--unfixable", "F401"]
-  - repo: local
+        args: ["--fix", "--show-source"]
+        stages: [pre-commit]
+  - repo: https://github.com/PyCQA/bandit
+    rev: '1.7.8'
     hooks:
-      - id: pytest-check
-        name: pytest-check
-        entry: make test-ci
-        language: system
-        pass_filenames: false
-        always_run: true
-        stages: [push]
-        types: [python]
+      - id: bandit
+        files: knn_tspi/
+        stages: [pre-commit]
+  - repo: https://github.com/Lucas-C/pre-commit-hooks-safety
+    rev: 'v1.3.3'
+    hooks:
+      - id: python-safety-dependencies-check
+        files: pyproject.toml
+        stages: [pre-commit]
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.3.0
+    rev: v1.9.0
     hooks:
       - id: mypy
         files: knn_tspi/
+        args: [--explicit-package-bases, --install-types, --non-interactive]
+        additional_dependencies:
+          - "numpy==1.26.4"
+        stages: [pre-commit]
+  - repo: https://github.com/compilerla/conventional-pre-commit
+    rev: v3.2.0
+    hooks:
+      - id: conventional-pre-commit
+        stages: [commit-msg]
+        args: []

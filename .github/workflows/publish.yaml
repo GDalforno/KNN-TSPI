@@ -1,4 +1,4 @@
-name: Upload KNN-TSPI Package on Release
+name: Upload KNN-TSPI Package to Pypi on Release
 
 on:
   release:
@@ -12,27 +12,21 @@ jobs:
     runs-on: ubuntu-22.04
     permissions:
       id-token: write
+    needs: pre-publish
     steps:
       - uses: actions/checkout@v3
-      - name: Install dependencies
-        run: make setup-ci
-      - name: Lint
-        run: make lint-ci
-      - name: Test
-        run: make test-ci
-      - uses: AppThreat/sast-scan-action@master
+      - uses: actions/setup-python@v3
         with:
-          type: "python"
-      - name: Extract tag name
-        id: tag
-        run: echo ::set-output name=TAG_NAME::$(echo $GITHUB_REF | cut -d / -f 3)
-      - name: Update version in setup.py
+          python-version: "3.10"
+      - name: Update version in __init__.py
         run: >-
-          sed -i "s/{{VERSION_PLACEHOLDER}}/${{ steps.tag.outputs.TAG_NAME }}/g" setup.py
-      - name: Build package
-        run: make build-ci
-      - name: Publish package
-        uses: pypa/gh-action-pypi-publish@release/v1
+          sed -i "s/{{VERSION_PLACEHOLDER}}/$(echo $GITHUB_REF | cut -d / -f 3)/g" knn_tspi/__init__.py
+      - name: Build and publish to pypi
+        uses: JRubics/poetry-publish@v1.16
         with:
-          user: __token__
-          password: ${{ secrets.PYPI_API_TOKEN }}
+          python_version: "3.10"
+          poetry_version: "==1.8.2"
+          pypi_token: ${{ secrets.TEST_PYPI_TOKEN }}
+          repository_name: "testpypi"
+          repository_url: "https://test.pypi.org/legacy/"
+          plugins: "poetry-dynamic-versioning[plugin]"

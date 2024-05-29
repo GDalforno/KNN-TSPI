@@ -12,11 +12,11 @@ from knn_tspi.exceptions import (
 def validate_hyperparameters(
     k: int, len_query: int, weights: Literal["uniform", "distance"]
 ) -> None:
-    if type(k) != int or k <= 0:
+    if not isinstance(k, int) or k <= 0:
         raise InvalidParameterException(
             f"Number of neighbors must be an integer greater than 1, got {k}!"
         )
-    if type(len_query) != int or len_query <= 2:
+    if not isinstance(len_query, int) or len_query <= 2:
         raise InvalidParameterException(
             f"Query length must be an integer greater than 3, got {len_query}!"
         )
@@ -41,7 +41,7 @@ def validate_fit(data: np.ndarray) -> None:
 
 
 def validate_predict(h: int, is_fitted: bool) -> None:
-    if type(h) != int or h <= 0:
+    if not isinstance(h, int) or h <= 0:
         raise InvalidParameterException(
             f"Horizon must be an integer greater than 0, got {h}!"
         )
