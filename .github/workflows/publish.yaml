@@ -26,7 +26,5 @@ jobs:
         with:
           python_version: "3.10"
           poetry_version: "==1.8.2"
-          pypi_token: ${{ secrets.TEST_PYPI_TOKEN }}
-          repository_name: "testpypi"
-          repository_url: "https://test.pypi.org/legacy/"
+          pypi_token: ${{ secrets.PYPI_API_TOKEN }}
           plugins: "poetry-dynamic-versioning[plugin]"
