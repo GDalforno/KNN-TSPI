@@ -1,3 +1,10 @@
 Version 1.0.0
 2023-09-28
 - First release on PyPI
+
+Version 1.0.1
+2024-05-29
+- Add poetry as package manager
+- Include project on codecov
+- Enhance CI pipeline
+- Enhance project documentation
